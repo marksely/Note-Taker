@@ -12,12 +12,11 @@ notes.post('/', (req, res) => {
     const {title ,text} = req.body;
 
     if(req.body) {
-        let newNote = {
+        const newNote = {
             title,
             text,
             id: uuidv4()
         };
-        
         readAndAdd(newNote, './db/db.json');
         res.json('New note added!');    
     } else {

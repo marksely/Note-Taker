@@ -7,13 +7,13 @@ const writeToFile = (fileLocation, data) => {
     fs.writeFile(fileLocation, JSON.stringify(data, null, 4), (err) => err ? console.log(err) : console.log('Data successfully written to file!'))
 };
 
-const readAndAdd = (data, file) => {
-    fs.readFile(file, 'utf8', (err,data) => {
+const readAndAdd = (note, file) => {
+    fs.readFile(file, 'utf8', (err, data) => {
         if(err) {
             console.log(err);
         } else {
             const parsedData = JSON.parse(data);
-            parsedData.push(data);
+            parsedData.push(note);
             writeToFile(file, parsedData);
         }
     });
